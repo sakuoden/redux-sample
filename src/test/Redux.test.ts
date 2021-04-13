@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
 import { NumberAction, NumberActionType, plus, minus } from "../actions";
+import { numberState } from "../reducer";
 
 jest.mock('react-redux', () => ({
     useDispatch: () => jest.fn(),
@@ -19,4 +20,6 @@ test('Dispatcherに渡すActionCreatorを用意する', () => {
     const dispatchMinus: any = () => dispatch(minus(5));
 });
 
-test('')
+test('NumberのStateの初期値を設定する', () => {
+    expect(numberState).toStrictEqual({ value: 10 });
+})
