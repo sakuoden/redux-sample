@@ -2,10 +2,10 @@ import { Reducer } from "react";
 import { NumberAction, NumberActionType } from "./actions";
 
 export type NumberState = {
-    value: number
+    amount: number
 };
 
-export const numberState: NumberState = { value: 10 };
+export const numberState: NumberState = { amount: 10 };
 
 export const numberReducer: Reducer<NumberState, NumberAction> = (
     state: NumberState = numberState,
@@ -15,12 +15,12 @@ export const numberReducer: Reducer<NumberState, NumberAction> = (
         case NumberActionType.UP:
             return {
                 ...state,
-                value: state.value + action.amount,
+                amount: state.amount + action.amount,
             };
         case NumberActionType.DOWN:
             return {
                 ...state,
-                value: state.value - action.amount,
+                amount: state.amount - action.amount,
             };
         default: {
             const _: never = action.type

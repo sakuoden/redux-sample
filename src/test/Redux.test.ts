@@ -9,7 +9,7 @@ test('Dispatcherに渡すActionCreatorを用意する', () => {
 });
 
 test('NumberのStateの初期値を設定する', () => {
-    expect(numberState).toStrictEqual({ value: 10 });
+    expect(numberState).toStrictEqual({ amount: 10 });
 });
 
 test('新しい状態を返すReducerを定義する。', () => {
@@ -20,5 +20,5 @@ test('新しい状態を返すReducerを定義する。', () => {
 
     const newNumberState: NumberState = numberReducer(prevNumberState, numberAction);
 
-    expect(newNumberState).toStrictEqual({ value: 20 });
+    expect(newNumberState).toStrictEqual({ amount: 20 });
 })
