@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { plus } from '../actions';
+import { minus, plus } from '../actions';
 import SamplePage from '../components/SamplePage';
 import { NumberState } from '../reducer';
 
@@ -12,7 +12,7 @@ const EnhancedSamplePage: FC = () => {
         <SamplePage 
             amount={amount}
             plus={(amount: number) => dispatch(plus(amount))}
-            minus={(amount: number) => dispatch(amount)}
+            minus={(amount: number) => dispatch(minus(amount))}
         />
     )
 }

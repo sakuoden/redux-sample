@@ -1,4 +1,4 @@
-import { Reducer } from "react";
+import { Reducer } from "redux";
 import { NumberAction, NumberActionType } from "./actions";
 
 export type NumberState = {
