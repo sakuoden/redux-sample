@@ -23,4 +23,4 @@ test('Dispatcherに渡すActionCreatorを用意する', () => {
 
 test('NumberのStateの初期値を設定する', () => {
     expect(numberState).toStrictEqual({ value: 10 });
-})
+});
