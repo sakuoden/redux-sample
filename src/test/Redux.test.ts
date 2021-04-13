@@ -15,9 +15,10 @@ test('NumberActionTypeを定数を利用してNumberActionオブジェクトを�
 });
 
 test('Dispatcherに渡すActionCreatorを用意する', () => {
-    const dispatch: Dispatch<NumberAction> = useDispatch();
-    const dispatchPlus: any = () => dispatch(plus(10));
-    const dispatchMinus: any = () => dispatch(minus(5));
+    const plusActionCreator = plus;
+    const minusActionCreator = minus;
+    expect(plusActionCreator(10)).toStrictEqual({ type: NumberActionType.UP, amount: 10 });
+    expect(minusActionCreator(5)).toStrictEqual({ type: NumberActionType.DOWN, amount: 5 });
 });
 
 test('NumberのStateの初期値を設定する', () => {
