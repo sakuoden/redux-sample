@@ -1,5 +1,5 @@
-import { NumberActionType, plus, minus } from "../actions";
-import { numberState } from "../reducer";
+import { NumberActionType, plus, minus, NumberAction } from "../actions";
+import { NumberState, numberState, numberReducer } from "../reducer";
 
 test('Dispatcherに渡すActionCreatorを用意する', () => {
     const plusActionCreator = plus;
@@ -11,3 +11,14 @@ test('Dispatcherに渡すActionCreatorを用意する', () => {
 test('NumberのStateの初期値を設定する', () => {
     expect(numberState).toStrictEqual({ value: 10 });
 });
+
+test('新しい状態を返すReducerを定義する。', () => {
+    const prevNumberState: NumberState = numberState;
+
+    const plusActionCreator = plus;
+    const numberAction: NumberAction = plusActionCreator(10);
+
+    const newNumberState: NumberState = numberReducer(prevNumberState, numberAction);
+
+    expect(newNumberState).toStrictEqual({ value: 20 });
+})
