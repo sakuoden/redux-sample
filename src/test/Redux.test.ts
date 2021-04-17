@@ -1,5 +1,5 @@
-import { NumberActionType, plus, minus, NumberAction } from "../actions";
-import { NumberState, numberState, numberReducer } from "../reducer";
+import { NumberActionType, plus, minus, NumberAction } from "../redux/actions";
+import { NumberState, numberState, numberReducer } from "../redux/reducer";
 
 test('Dispatcherに渡すActionCreatorを用意する', () => {
     const plusActionCreator = plus;

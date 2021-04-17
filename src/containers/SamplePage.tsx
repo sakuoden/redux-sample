@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { minus, plus } from '../actions';
+import { minus, plus } from '../redux/actions';
 import SamplePage from '../components/SamplePage';
-import { NumberState } from '../reducer';
+import { NumberState } from '../redux/reducer';
 
 const EnhancedSamplePage: FC = () => {
     const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
