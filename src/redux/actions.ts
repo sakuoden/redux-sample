@@ -1,6 +1,6 @@
 export const NumberActionType = {
-    UP: 'UP',
-    DOWN: 'DOWN',
+    UP: 'number/up',
+    DOWN: 'number/down',
 } as const;
 
 type NumberActionType = typeof NumberActionType[keyof typeof NumberActionType];
