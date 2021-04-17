@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
@@ -54,12 +54,11 @@ const minus = (payload: number) => ({
 });
 
 const EnhancedSamplePage: FC = () => {
-    const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
-    const dispatch = useDispatch();
+    const [state, dispatch] = useReducer(numberReducer, { amount: 10 });
 
     return (
         <SamplePage 
-            amount={amount}
+            amount={state.amount}
             plus={(amount: number) => dispatch(plus(amount))}
             minus={(amount: number) => dispatch(minus(amount))}
         />
