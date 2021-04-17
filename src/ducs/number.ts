@@ -1,10 +1,6 @@
 import { Reducer } from "redux";
 
 // State
-export type NumberState = {
-    amount: number
-};
-
 export const numberState: NumberState = { amount: 10 };
 
 // Reducer

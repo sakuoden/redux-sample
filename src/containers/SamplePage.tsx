@@ -2,8 +2,6 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
-import { NumberState } from '../ducs/number';
-import { Reducer } from 'redux';
 
 const NumberActionType = {
     up: 'number/up',
@@ -17,7 +15,9 @@ type NumberAction = {
     payload?: number;
 };
 
-
+type NumberState = {
+    amount: number;
+};
 
 const EnhancedSamplePage: FC = () => {
     const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
