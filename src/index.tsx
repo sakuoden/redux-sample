@@ -4,19 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore } from 'redux';
-import { numberReducer, numberState } from './ducs/number';
-import { Provider } from 'react-redux';
-
-const store = createStore(
-  numberReducer, numberState
-);
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
