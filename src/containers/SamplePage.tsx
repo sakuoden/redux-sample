@@ -1,57 +1,30 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FC, useReducer } from 'react';
 import SamplePage from '../components/SamplePage';
-
-const NumberActionType = {
-    up: 'number/up',
-    down: 'number/down',
-} as const;
-
-type NumberActionType = typeof NumberActionType[keyof typeof NumberActionType];
-
-type NumberAction = {
-    type: NumberActionType,
-    payload?: number;
-};
 
 type NumberState = {
     amount: number;
 };
+const initialState: NumberState = { amount: 0 };//createSliceの引数のオブジェクト型で利用する為のdummy
 
-const numberReducer = (
-    preState: NumberState,
-    action: NumberAction,
-): NumberState => {
-    switch (action.type) {
-        case NumberActionType.up:
-            return {
-                ...preState,
-                amount: preState.amount + (action.payload ?? 0),
-            };
-        case NumberActionType.down:
-            return {
-                ...preState,
-                amount: preState.amount - (action.payload ?? 0),
-            };
-        default: {
-            const _: never = action.type
-
-            return preState;
-        }
+export const numberSlice = createSlice({
+    name: 'number',
+    initialState,
+    reducers: {
+        up: (preState: NumberState, action: PayloadAction<number>) => ({
+            ...preState,
+            amount: preState.amount + action.payload,
+        }),
+        down: (preState: NumberState, action: PayloadAction<number>) => ({
+            ...preState,
+            amount: preState.amount - action.payload,
+        }),
     }
-};
-
-const plus = (payload: number) => ({
-    type: NumberActionType.up,
-    payload,
-});
-
-const minus = (payload: number) => ({
-    type: NumberActionType.down,
-    payload,
 });
 
 const EnhancedSamplePage: FC = () => {
-    const [state, dispatch] = useReducer(numberReducer, { amount: 10 });
+    const [state, dispatch] = useReducer(numberSlice.reducer, { amount: 10 });
+    const { up: plus, down: minus } = numberSlice.actions;
 
     return (
         <SamplePage 
