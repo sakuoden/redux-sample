@@ -4,7 +4,7 @@ import SamplePage from '../components/SamplePage';
 const NumberActionType = {
     up: 'number/up',
     down: 'number/down',
-};
+} as const;
 
 type NumberActionType = typeof NumberActionType[keyof typeof NumberActionType];
 
