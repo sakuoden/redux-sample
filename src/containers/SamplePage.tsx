@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
+import { Reducer } from 'redux';
 
 const NumberActionType = {
     up: 'number/up',
@@ -17,6 +18,29 @@ type NumberAction = {
 
 type NumberState = {
     amount: number;
+};
+
+const numberReducer = (
+    preState: NumberState,
+    action: NumberAction,
+): NumberState => {
+    switch (action.type) {
+        case NumberActionType.up:
+            return {
+                ...preState,
+                amount: preState.amount + (action.payload ?? 0),
+            };
+        case NumberActionType.down:
+            return {
+                ...preState,
+                amount: preState.amount - (action.payload ?? 0),
+            };
+        default: {
+            const _: never = action.type
+
+            return preState;
+        }
+    }
 };
 
 const EnhancedSamplePage: FC = () => {
