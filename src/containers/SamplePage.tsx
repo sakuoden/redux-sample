@@ -43,6 +43,16 @@ const numberReducer = (
     }
 };
 
+const plus = (payload: number) => ({
+    type: NumberActionType.up,
+    payload,
+});
+
+const minus = (payload: number) => ({
+    type: NumberActionType.down,
+    payload,
+});
+
 const EnhancedSamplePage: FC = () => {
     const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
     const dispatch = useDispatch();
