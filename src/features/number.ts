@@ -7,19 +7,6 @@ export type NumberState = {
 
 export const numberState: NumberState = { amount: 10 };
 
-// Ations
-export const NumberActionType = {
-    UP: 'number/up',
-    DOWN: 'number/down',
-} as const;
-
-type NumberActionType = typeof NumberActionType[keyof typeof NumberActionType];
-
-export type NumberAction = {
-    type: NumberActionType;
-    amount: number;
-};
-
 // Reducer
 export const numberReducer: Reducer<NumberState, NumberAction> = (
     state: NumberState = numberState,
