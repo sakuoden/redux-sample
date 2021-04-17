@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
 import { NumberState } from '../ducs/number';
+import { Reducer } from 'redux';
 
 const NumberActionType = {
     up: 'number/up',
@@ -11,10 +12,12 @@ const NumberActionType = {
 
 type NumberActionType = typeof NumberActionType[keyof typeof NumberActionType];
 
-export type NumberAction = {
+type NumberAction = {
     type: NumberActionType,
     payload?: number;
 };
+
+
 
 const EnhancedSamplePage: FC = () => {
     const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
