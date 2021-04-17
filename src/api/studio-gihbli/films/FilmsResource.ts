@@ -2,14 +2,12 @@ import { AxiosError, AxiosResponse } from "axios";
 import BadRequest from "../error/BadRequest";
 import studioGihbliHttpClient from "../studioGihbliHttpClient";
 import Film from "./filmid/Film";
-import FilmIdResponse from "./filmid/FilmIdResponse";
 
 class FilmsResource {
-    filmId = async (filmId: string): Promise<FilmIdResponse> => {
+    filmId = async (filmId: string): Promise<Film> => {
         try {
             const axiosResponse: AxiosResponse<Film> = await studioGihbliHttpClient.get(`/films/${filmId}`);
-            
-            return new FilmIdResponse(axiosResponse);
+            return axiosResponse.data;
         } catch (error) {
             if (error.isAxiosError) {
                 const axiosError: AxiosError = error;
