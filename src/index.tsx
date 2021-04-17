@@ -4,13 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore } from 'redux';
-import { numberReducer, numberState } from './features/number';
+import { counterSlice } from './features/number';
 import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-const store = createStore(
-  numberReducer, numberState
-);
+const store = configureStore({reducer: counterSlice.reducer});
 
 ReactDOM.render(
   <React.StrictMode>
