@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { numberReducer, numberState } from './ducs/number';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 const store = createStore(
-  numberReducer, numberState
+  numberReducer, numberState, applyMiddleware(thunk)
 );
 
 ReactDOM.render(
