@@ -1,5 +1,5 @@
-import { NumberActionType, plus, minus, NumberAction } from "../ducs/number";
-import { NumberState, numberState, numberReducer } from "../ducs/number";
+import { NumberActionType, plus, minus, NumberAction } from "../features/number";
+import { NumberState, numberState, numberReducer } from "../features/number";
 
 test('Dispatcherに渡すActionCreatorを用意する', () => {
     const plusActionCreator = plus;
