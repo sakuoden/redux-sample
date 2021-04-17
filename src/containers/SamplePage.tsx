@@ -1,8 +1,5 @@
 import { FC, useReducer } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
-import { Reducer } from 'redux';
 
 const NumberActionType = {
     up: 'number/up',
