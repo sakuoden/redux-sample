@@ -16,7 +16,6 @@ const SamplePage: FC<Props> = ({
         <div>
             <h1>Redux Sample</h1>
             <p>Reduxで状態管理している数値: {amount}</p>
-            <br/>
             <button onClick={() => plus(10)}>+</button>
             <button onClick={() => minus(5)}>-</button>
         </div>
