@@ -25,6 +25,8 @@ class AxiosErrorHandler {
         if (this.extractResponse().status === 404) {
             throw new NotFound(this.axiosError);
         }
+
+        throw new Error(this.axiosError.message);
     }
 }
 
