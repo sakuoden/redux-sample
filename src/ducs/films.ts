@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import Film from "../api/studio-gihbli/films/filmid/Film";
 import FilmsResource from "../api/studio-gihbli/films/FilmsResource";
 import { plus } from "./number";
@@ -41,8 +42,35 @@ type FilmActionType = typeof FilmActionType[keyof typeof FilmActionType];
 
 type FilmAction = {
     type: FilmActionType;
-    payload?: {
-        id: string,
+    payload: {
+        film: Film,
     };
-    error?: boolean,
+};
+
+// Reducer
+export const filmReducer: Reducer<FilmState, FilmAction> = (
+    preState: FilmState = initalState,
+    action: FilmAction
+): FilmState => {
+    switch (action.type) {
+        case FilmActionType.requestStart:
+            return preState;
+        case FilmActionType.requestSuccess:
+            return {
+                ...preState,
+                requestFailed: false,
+                film: action.payload.film,
+            }
+        case FilmActionType.requestFailed:
+            return {
+                ...preState,
+                requestFailed: true,
+                film: initalState.film,
+            }
+        default: {
+            const _: never = action.type
+
+            return preState;
+        }
+    }
 };
