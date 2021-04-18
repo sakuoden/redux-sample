@@ -1,4 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
+import AxiosErrorHandler from "../error/AxiosErrorHandler";
 import BadRequest from "../error/BadRequest";
 import studioGihbliHttpClient from "../studioGihbliHttpClient";
 import Film from "./filmid/Film";
@@ -10,10 +11,7 @@ class FilmsResource {
             return axiosResponse.data;
         } catch (error) {
             if (error.isAxiosError) {
-                const axiosError: AxiosError = error;
-                if (axiosError.response?.status === 400) {
-                    throw new BadRequest(axiosError);
-                }
+                new AxiosErrorHandler(error).throw();
             }
 
             throw new Error(error.message);
