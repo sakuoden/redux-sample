@@ -39,7 +39,7 @@ const FilmActionType = {
 
 type FilmActionType = typeof FilmActionType[keyof typeof FilmActionType];
 
-export type FilmAction = {
+type FilmAction = {
     type: FilmActionType;
     payload?: {
         id: string,
