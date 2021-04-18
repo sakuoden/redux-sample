@@ -1,7 +1,6 @@
-import { Reducer } from "redux";
+import { Dispatch, Reducer } from "redux";
 import Film from "../api/studio-gihbli/films/filmid/Film";
 import FilmsResource from "../api/studio-gihbli/films/FilmsResource";
-import { plus } from "./number";
 
 // State
 export type FilmState = {
@@ -42,7 +41,7 @@ type FilmActionType = typeof FilmActionType[keyof typeof FilmActionType];
 
 type FilmAction = {
     type: FilmActionType;
-    payload: {
+    payload?: {
         film: Film,
     };
 };
@@ -59,7 +58,7 @@ export const filmReducer: Reducer<FilmState, FilmAction> = (
             return {
                 ...preState,
                 requestFailed: false,
-                film: action.payload.film,
+                film: action.payload?.film ?? preState.film,
             }
         case FilmActionType.requestFailed:
             return {
@@ -74,3 +73,28 @@ export const filmReducer: Reducer<FilmState, FilmAction> = (
         }
     }
 };
+
+// Action Creator
+export const getFilm = (filmId: string) => async (dispatch: Dispatch) => {
+    dispatch(filmRequestStart());
+
+    try {
+        const film = await new FilmsResource().filmId(filmId);
+        dispatch(filmRequestSuccess(film));
+    } catch (error) {
+        dispatch(filmRequestFailed());
+    }
+}
+
+const filmRequestStart = (): FilmAction => ({
+    type: FilmActionType.requestSuccess,
+});
+
+const filmRequestSuccess = (film: Film): FilmAction => ({
+    type: FilmActionType.requestStart,
+    payload: { film },
+});
+
+const filmRequestFailed = (): FilmAction => ({
+    type: FilmActionType.requestFailed,
+});
