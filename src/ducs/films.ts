@@ -31,7 +31,7 @@ export const initalState: FilmState = {
 };
 
 // Actions
-export const FilmActionType = {
+const FilmActionType = {
     requestStart: 'film/request_start',
     requestSuccess: 'film/request_success',
     requestFailed: 'film/request_failed',
