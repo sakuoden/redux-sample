@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { minus, plus } from '../ducs/number';
 import SamplePage from '../components/SamplePage';
-import { NumberState } from '../ducs/number';
+import { Store } from '../ducs/root';
 
 const EnhancedSamplePage: FC = () => {
-    const amount = useSelector<NumberState, number>((state: NumberState) => state.amount);
+    const amount = useSelector((store: Store) => store.numberState.amount);
     const dispatch = useDispatch();
 
     return (
