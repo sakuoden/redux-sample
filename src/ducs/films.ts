@@ -87,11 +87,11 @@ export const getFilm = (filmId: string) => async (dispatch: Dispatch) => {
 }
 
 const filmRequestStart = (): FilmAction => ({
-    type: FilmActionType.requestSuccess,
+    type: FilmActionType.requestStart,
 });
 
 const filmRequestSuccess = (film: Film): FilmAction => ({
-    type: FilmActionType.requestStart,
+    type: FilmActionType.requestSuccess,
     payload: { film },
 });
 
