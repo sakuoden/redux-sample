@@ -5,6 +5,7 @@ type Props = {
     amount?: number;
     plus?: (amount: number) => void;
     minus?: (amount: number) => void;
+    filmId?: string;
     requestFailed?: boolean;
     film?: Film;
 };
@@ -13,6 +14,7 @@ const SamplePage: FC<Props> = ({
     amount = 0,
     plus = () => undefined,
     minus = () => undefined,
+    filmId = "",
     requestFailed = false,
     film = null,
 }) => {
@@ -26,7 +28,7 @@ const SamplePage: FC<Props> = ({
 
             <h1>🦞Redux Thunk Sample</h1>
             <h2><a href={"https://ghibliapi.herokuapp.com/#tag/Films%2Fpaths%2F~1films~1%7Bid%7D%2Fget"}>STUDIO GIHBLI API</a>のFILMSリソース</h2>
-            <h3>Film ID: 58611129-2dbc-4a81-a72f-77ddfc1b1b49</h3>
+            <h3>Film ID: {filmId}</h3>
             {requestFailed ? (
                 <p>リクエストに失敗しました</p>
             ) : (
