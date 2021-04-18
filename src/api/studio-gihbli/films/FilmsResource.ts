@@ -1,6 +1,5 @@
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import AxiosErrorHandler from "../error/AxiosErrorHandler";
-import BadRequest from "../error/BadRequest";
 import studioGihbliHttpClient from "../studioGihbliHttpClient";
 import Film from "./filmid/Film";
 

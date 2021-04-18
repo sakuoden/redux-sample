@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import BadRequest from "./BadRequest";
 import NotFound from "./NotFound";
 
