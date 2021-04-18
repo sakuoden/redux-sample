@@ -4,9 +4,10 @@ import { plus } from "./number";
 
 // State
 export type FilmState = {
+    // TODO: BadRequest, NotFoundを実装とするApiError interfaceを作って、ApiErrorを型にした方が良いかも。
     requestFailed: boolean;
     film: Film;
-}
+};
 
 export const initalState: FilmState = {
     requestFailed: false,
